@@ -25,6 +25,26 @@ import { makeStyles } from '@mui/styles';
 
 const drawerWidth = 240;
 
+const useStyles = makeStyles(({ palette }) => ({
+    page: {
+        height: '100vh',
+        backgroundColor: palette.background.main,
+        overflow: 'hidden',
+    },
+    buttonsWrapper: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    infoWrapper: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+}));
+
 const openedMixin = (theme) => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -131,6 +151,7 @@ function generateListItem(item, i, handleClick, expand) {
 }
 
 export default function Dashboard() {
+    const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const [expand, setExpand] = React.useState(false);
@@ -147,28 +168,8 @@ export default function Dashboard() {
         setExpand(!expand);
     }
 
-    const useStyles = makeStyles(({ palette }) => ({
-        page: {
-            height: '100vh',
-            backgroundColor: palette.background.main,
-            overflow: 'hidden',
-        },
-        buttonsWrapper: {
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-        },
-        infoWrapper: {
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center'
-        },
-    }));
-
     return (
-        <div>
+        <div className={classes.page}>
             <CssBaseline />
             <AppBar position="fixed" open={open} color="secondary">
                 <Toolbar>
