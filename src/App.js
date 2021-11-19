@@ -43,8 +43,8 @@ function App() {
         <div className={classes.buttonsWrapper}>
           <Button component={Link} to="/home" color='primary' variant="contained" size="large">Beginner</Button>
           <div className={classes.infoWrapper}>
-            <InfoIcon sx={{ color: 'white' }} />
-            <Typography color='white'>You are new to the stock market and are looking for basic stock info</Typography>
+            <InfoIcon sx={{ color: 'lightgrey' }} />
+            <Typography color='lightgrey'>You are new to the stock market and are looking for basic stock info</Typography>
           </div>
 
           <Button component={Link} to="/home" variant="contained" color="primary" size="large">Moderate</Button>

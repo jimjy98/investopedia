@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -22,6 +22,10 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import AnnouncementIcon from '@mui/icons-material/Announcement';
 import { Collapse } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import TextField from '@mui/material/TextField';
+import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from '@mui/material/InputAdornment';
+import WatchlistPanel from '../components/WatchlistPanel';
 
 const drawerWidth = 240;
 
@@ -31,18 +35,9 @@ const useStyles = makeStyles(({ palette }) => ({
         backgroundColor: palette.background.main,
         overflow: 'hidden',
     },
-    buttonsWrapper: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    infoWrapper: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
+    input: {
+        color: "white"
+    }
 }));
 
 const openedMixin = (theme) => ({
@@ -71,7 +66,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
 }));
 
@@ -134,8 +128,14 @@ function generateListItem(item, i, handleClick, expand) {
             </ListItemButton>,
             <Collapse in={expand} timeout="auto" unmountOnExit>
                 <List component="div" >
-                    {generateListItem('Watchlist', 2, handleClick, expand)}
-                    {generateListItem('News', 4, handleClick, expand)}
+                    <ListItemButton key='2' sx={{ pl: 4 }}>
+                        <ListItemIcon>{getItem(2)}</ListItemIcon>
+                        <ListItemText primary='Watchlist' />
+                    </ListItemButton>
+                    <ListItemButton key='4' sx={{ pl: 4 }}>
+                        <ListItemIcon>{getItem(4)}</ListItemIcon>
+                        <ListItemText primary='News' />
+                    </ListItemButton>
                 </List>
             </Collapse>]
         )
@@ -155,49 +155,61 @@ export default function Dashboard() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const [expand, setExpand] = React.useState(false);
-
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
-
-    const handleClick = () => {
-        setExpand(!expand);
-    }
+    const [ticker, setTicker] = React.useState('');
 
     return (
         <div className={classes.page}>
-            <CssBaseline />
-            <AppBar position="fixed" open={open} color="secondary">
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        sx={{
-                            marginRight: '36px',
-                            ...(open && { display: 'none' }),
-                        }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
-            <Drawer variant="permanent" open={open}>
-                <DrawerHeader>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-                    </IconButton>
-                </DrawerHeader>
-                <Divider />
-                <List>
-                    {generateListItems(['Dashboard', 'Add panel', 'Watchlist', 'Notifications'], handleClick, expand)}
-                </List>
-            </Drawer>
+            <Box>
+                <AppBar position="fixed" open={open} color="background">
+                    <Toolbar>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={() => setOpen(true)}
+                            edge="start"
+                            sx={{
+                                marginRight: '36px',
+                                ...(open && { display: 'none' }),
+                            }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+                <Drawer variant="permanent" open={open}>
+                    <DrawerHeader>
+                        <IconButton onClick={() => setOpen(false)}>
+                            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                        </IconButton>
+                    </DrawerHeader>
+                    <Divider />
+                    <List>
+                        {generateListItems(['Dashboard', 'Add panel', 'Watchlist', 'Notifications'], () => setExpand(!expand), expand)}
+                    </List>
+                </Drawer>
+            </Box>
+            <Box component="main" sx={{ flexGrow: 1, p: 3, marginLeft: 30}}>
+                <DrawerHeader />
+                <TextField id="ticker" label="Ticker code" variant="outlined" focused onChange={(e) => setTicker(e.target.value)}
+                    InputProps={{
+                        className: classes.input,
+                        endAdornment: (
+                            <InputAdornment>
+                                <IconButton color="primary">
+                                    <SearchIcon />
+                                </IconButton>
+                            </InputAdornment>
+                        )
+                    }}
+                />
+            </Box>
+
+            <Box width="100%" display="flex" justifyContent="flex-end">
+                <Box sx={{ width: '30%' }}>
+                    <WatchlistPanel />
+                </Box>
+            </Box>
+            
         </div>
     );
 }

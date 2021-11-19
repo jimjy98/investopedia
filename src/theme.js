@@ -8,7 +8,10 @@ export const theme = createTheme({
       background: {
         main: '#37393f',
         contrastText: '#fff',
-      },
+    },
+    white: {
+        main: '#fff',
+      }
     },
     typography: {
       fontFamily: ['Roboto', 'sans-serif'],
