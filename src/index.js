@@ -4,8 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from '@mui/material'
 import { initializeApp } from "firebase/app";
 
-import App from "./App";
-import Dashboard from "./pages/Dashboard";
+import { App } from "./App";
 import { theme } from "./theme";
 
 import './index.css'
@@ -25,10 +24,7 @@ const rootElement = document.getElementById("root");
 render(
   <ThemeProvider theme={theme}>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="home" element={<Dashboard />} />
-      </Routes>
+      <App />
     </BrowserRouter>
   </ThemeProvider>,
   rootElement
