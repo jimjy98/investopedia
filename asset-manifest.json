@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/investopedia/static/css/main.b5dd3e23.chunk.css",
+    "main.js": "/investopedia/static/js/main.6e2b913f.chunk.js",
+    "main.js.map": "/investopedia/static/js/main.6e2b913f.chunk.js.map",
+    "runtime-main.js": "/investopedia/static/js/runtime-main.b43ef25f.js",
+    "runtime-main.js.map": "/investopedia/static/js/runtime-main.b43ef25f.js.map",
+    "static/js/2.b820fea1.chunk.js": "/investopedia/static/js/2.b820fea1.chunk.js",
+    "static/js/2.b820fea1.chunk.js.map": "/investopedia/static/js/2.b820fea1.chunk.js.map",
+    "index.html": "/investopedia/index.html",
+    "precache-manifest.c21b652d6d1b7d884576992f21234cac.js": "/investopedia/precache-manifest.c21b652d6d1b7d884576992f21234cac.js",
+    "service-worker.js": "/investopedia/service-worker.js",
+    "static/css/main.b5dd3e23.chunk.css.map": "/investopedia/static/css/main.b5dd3e23.chunk.css.map",
+    "static/js/2.b820fea1.chunk.js.LICENSE.txt": "/investopedia/static/js/2.b820fea1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b43ef25f.js",
+    "static/js/2.b820fea1.chunk.js",
+    "static/css/main.b5dd3e23.chunk.css",
+    "static/js/main.6e2b913f.chunk.js"
+  ]
+}
