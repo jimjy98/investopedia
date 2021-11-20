@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/investopedia/static/css/main.b5dd3e23.chunk.css",
-    "main.js": "/investopedia/static/js/main.5ab41162.chunk.js",
-    "main.js.map": "/investopedia/static/js/main.5ab41162.chunk.js.map",
+    "main.js": "/investopedia/static/js/main.e97611ab.chunk.js",
+    "main.js.map": "/investopedia/static/js/main.e97611ab.chunk.js.map",
     "runtime-main.js": "/investopedia/static/js/runtime-main.b43ef25f.js",
     "runtime-main.js.map": "/investopedia/static/js/runtime-main.b43ef25f.js.map",
-    "static/js/2.88e769b5.chunk.js": "/investopedia/static/js/2.88e769b5.chunk.js",
-    "static/js/2.88e769b5.chunk.js.map": "/investopedia/static/js/2.88e769b5.chunk.js.map",
+    "static/js/2.9652381c.chunk.js": "/investopedia/static/js/2.9652381c.chunk.js",
+    "static/js/2.9652381c.chunk.js.map": "/investopedia/static/js/2.9652381c.chunk.js.map",
     "index.html": "/investopedia/index.html",
-    "precache-manifest.7993114a8555ad84ec4e9940ca09c81a.js": "/investopedia/precache-manifest.7993114a8555ad84ec4e9940ca09c81a.js",
+    "precache-manifest.06caa08fc7dfca6dfb5822a821a1ac6d.js": "/investopedia/precache-manifest.06caa08fc7dfca6dfb5822a821a1ac6d.js",
     "service-worker.js": "/investopedia/service-worker.js",
     "static/css/main.b5dd3e23.chunk.css.map": "/investopedia/static/css/main.b5dd3e23.chunk.css.map",
-    "static/js/2.88e769b5.chunk.js.LICENSE.txt": "/investopedia/static/js/2.88e769b5.chunk.js.LICENSE.txt"
+    "static/js/2.9652381c.chunk.js.LICENSE.txt": "/investopedia/static/js/2.9652381c.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b43ef25f.js",
-    "static/js/2.88e769b5.chunk.js",
+    "static/js/2.9652381c.chunk.js",
     "static/css/main.b5dd3e23.chunk.css",
-    "static/js/main.5ab41162.chunk.js"
+    "static/js/main.e97611ab.chunk.js"
   ]
 }
