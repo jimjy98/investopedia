@@ -1,22 +1,27 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import ReactHighcharts from 'react-highcharts/ReactHighstock.src';
 import moment from 'moment';
 
-import { addToWatchlist, tickerExists, removeFromWatchlist } from '../api';
+import { addToWatchlist, tickerExists, removeFromWatchlist, addToNotifications, notificationExists, removeFromNotifications } from '../api';
 
 export default function Chart({ ticker, data }) {
 
-    const [tickerDoesExist, setTickerExists] = React.useState(false);
+    const [tickerDoesExist, setTickerExists] = useState(false);
+    const [notificationDoesExist, setNotificationExists] = useState(false);
+
 
     useEffect(() => {
         tickerExists(ticker).then((exists) => {
             setTickerExists(exists);
         });
+        notificationExists(ticker).then((exists) => {
+            setNotificationExists(exists);
+        });
     })
-    
+
     function handleTickerExists() {
         if (tickerDoesExist) {
             removeFromWatchlist(ticker);
@@ -27,6 +32,17 @@ export default function Chart({ ticker, data }) {
             setTickerExists(true);
         }
     }
+    function handleNotificationExists() {
+        if (notificationDoesExist) {
+            removeFromNotifications(ticker);
+            setNotificationExists(false);
+        }
+        else if (!notificationDoesExist) {
+            addToNotifications(ticker);
+            setNotificationExists(true);
+        }
+    }
+
     const options = { style: 'currency', currency: 'USD' };
     const numberFormat = new Intl.NumberFormat('en-US', options);
     const configPrice = {
@@ -140,6 +156,25 @@ export default function Chart({ ticker, data }) {
                     Add to Watchlist
                 </Button>
             }
+            {notificationDoesExist ?
+                <Button
+                    variant="contained"
+                    color='error'
+                    startIcon={<RemoveCircleIcon fontSize="small" />}
+                    onClick={() => handleNotificationExists()}
+                >
+                    Remove from Notifications
+                </Button> :
+                <Button
+                    variant="contained"
+                    color="primary"
+                    startIcon={<AddIcon fontSize="small" />}
+                    onClick={() => handleNotificationExists()}
+                >
+                    Add to Notifications
+                </Button>
+            }
         </div>
-    )
+    );
+
 }

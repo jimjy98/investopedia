@@ -22,6 +22,22 @@ export const getWatchlist = async () => {
     return watchlist;
 }
 
+export const getNotifications = async () => {
+    const db = getFirestore();
+
+    var notifications = [];
+    const querySnapshot = await getDocs(collection(db, 'notifications'));
+    querySnapshot.forEach(doc => {
+        notifications.push({
+            ticker: doc.id.toUpperCase(),
+            above: doc.data().above,
+            below: doc.data().below,
+        });
+    })
+
+    return notifications;
+}
+
 export const addToWatchlist = async (ticker) => {
     const db = getFirestore();
 
@@ -35,16 +51,42 @@ export const addToWatchlist = async (ticker) => {
     });
 }
 
+export const addToNotifications = async (ticker) => {
+    const db = getFirestore();
+
+    var curr = generateRandom(1000);
+    var h = curr + generateRandom(100);
+    var l = curr - generateRandom(100);
+    await setDoc(doc(db, 'notifications', ticker.toLowerCase()), {
+        above: h,
+        below: l,
+    });
+}
+
 export const removeFromWatchlist = async (ticker) => {
     const db = getFirestore();
 
     await deleteDoc(doc(db, 'watchlist', ticker.toLowerCase()));
 }
 
+export const removeFromNotifications = async (ticker) => {
+    const db = getFirestore();
+
+    await deleteDoc(doc(db, 'notifications', ticker.toLowerCase()));
+}
+
 export const tickerExists = async (ticker) => {
     if (ticker === '') return false;
     const db = getFirestore();
     const docRef = doc(db, 'watchlist', ticker.toLowerCase());
+    const docSnap = await getDoc(docRef);
+    return docSnap.exists();
+}
+
+export const notificationExists = async (ticker) => {
+    if (ticker === '') return false;
+    const db = getFirestore();
+    const docRef = doc(db, 'notifications', ticker.toLowerCase());
     const docSnap = await getDoc(docRef);
     return docSnap.exists();
 }

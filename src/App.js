@@ -19,6 +19,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import Home from './pages/Home';
 import Dashboard from "./pages/Dashboard";
 import Watchlist from "./pages/Watchlist";
+import Notifications from './pages/Notifications';
 
 const drawerWidth = 240;
 
@@ -208,6 +209,7 @@ export const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="watchlist" element={<Watchlist />} />
+            <Route path="notifications" element={<Notifications />} />
           </Routes>
         </Box>
       </Box>

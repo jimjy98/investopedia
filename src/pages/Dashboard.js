@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useTheme } from '@mui/material/styles';
 import { InputAdornment, TextField, Box, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import SearchIcon from '@mui/icons-material/Search';
