@@ -66,7 +66,7 @@ export default function Chart({ ticker, data }) {
             selected: 1
         },
         title: {
-            text: ticker
+            text: ticker.toUpperCase()
         },
         chart: {
             height: 600,

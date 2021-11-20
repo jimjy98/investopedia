@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from "react-dom";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { ThemeProvider } from '@mui/material'
 import { initializeApp } from "firebase/app";
 

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import { Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';

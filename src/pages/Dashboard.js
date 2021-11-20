@@ -1,17 +1,6 @@
 import React, { useState } from 'react';
-import { styled, useTheme } from '@mui/material/styles';
-import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import AddIcon from '@mui/icons-material/Add';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import AnnouncementIcon from '@mui/icons-material/Announcement';
-import { InputAdornment, Collapse, TextField, Box, Toolbar, List, Divider, IconButton, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { InputAdornment, TextField, Box, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import WatchlistPanel from '../components/WatchlistPanel';
@@ -21,8 +10,6 @@ import { DashboardGrid } from '../components/DashboardGrid';
 
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-
-const drawerWidth = 240;
 
 const useStyles = makeStyles(({ palette }) => ({
     page: {
@@ -51,7 +38,6 @@ const COLS = 2;
 
 export default function Dashboard() {
     const classes = useStyles();
-    const theme = useTheme();
     const [ticker, setTicker] = useState('');
     const [hideChart, setHideChart] = useState(true);
 
@@ -83,12 +69,13 @@ export default function Dashboard() {
                             focused 
                             onChange={(e) => setTicker(e.target.value)}
                             inputProps={{
-                                style: { color: 'white', textTransform: 'uppercase' }
+                                style: { color: 'white', textTransform: 'uppercase' },
+                                onKeyPress: (event) => (event.key === 'Enter') ? onHideChart(hideChart) : null
                             }}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment>
-                                        <IconButton color="primary" onClick={() => onHideChart(hideChart)}>
+                                        <IconButton color="primary" onClick={() => onHideChart(hideChart)} >
                                             <SearchIcon />
                                         </IconButton>
                                     </InputAdornment>
