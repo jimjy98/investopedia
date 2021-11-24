@@ -117,13 +117,13 @@ function getIcon(i) {
   else if (i === 4) return <AnnouncementIcon />
 }
 
-function generateListItems(items, handleClick, expand) {
+function generateListItems(items, handleClick, expand, handleHideWatchlist, handleHideNewsPanel) {
   return items.map((item, i) => (
-    generateListItem(item, i, handleClick, expand)
+    generateListItem(item, i, handleClick, expand, handleHideWatchlist, handleHideNewsPanel)
   ));
 }
 
-function generateListItem(item, i, handleClick, expand) {
+function generateListItem(item, i, handleClick, expand, handleHideWatchlist, handleHideNewsPanel) {
   if (!item.path) {
     return (
       [<ListItemButton onClick={handleClick} key={i}>
@@ -133,11 +133,11 @@ function generateListItem(item, i, handleClick, expand) {
       </ListItemButton>,
       <Collapse in={expand} timeout="auto" unmountOnExit>
         <List component="div" >
-          <ListItemButton key='1' sx={{ pl: 4 }}>
+          <ListItemButton key='1' sx={{ pl: 4 }} onClick={handleHideWatchlist}>
             <ListItemIcon>{getIcon(1)}</ListItemIcon>
             <ListItemText primary='Watchlist' />
           </ListItemButton>
-          <ListItemButton key='4' sx={{ pl: 4 }}>
+          <ListItemButton key='4' sx={{ pl: 4 }} onClick={handleHideNewsPanel}>
             <ListItemIcon>{getIcon(4)}</ListItemIcon>
             <ListItemText primary='News' />
           </ListItemButton>
@@ -167,6 +167,8 @@ const pages = [
 export const App = () => {
   const [open, setOpen] = useState(false);
   const [expand, setExpand] = useState(false);
+  const [hideWatchlist, setHideWatchlist] = useState(false);
+  const [hideNewsPanel, setHideNewsPanel] = useState(true);
   const theme = useTheme();
   const classes = useStyles();
 
@@ -200,14 +202,14 @@ export const App = () => {
           </DrawerHeader>
           <Divider />
           <List>
-            {generateListItems(pages, () => setExpand(!expand), expand)}
+            {generateListItems(pages, () => setExpand(!expand), expand, () => setHideWatchlist(!hideWatchlist), () => setHideNewsPanel(!hideNewsPanel))}
           </List>
         </Drawer>
         
         <Box mt={8} flex={1}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard hideWatchlist={hideWatchlist} hideNewsPanel={hideNewsPanel} />} />
             <Route path="watchlist" element={<Watchlist />} />
             <Route path="notifications" element={<Notifications />} />
           </Routes>

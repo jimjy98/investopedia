@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { InputAdornment, TextField, Box, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import WatchlistPanel from '../components/WatchlistPanel';
+import NewsPanel from '../components/NewsPanel';
 import Chart from '../components/Chart';
 import priceData from '../assets/data.json';
 import { DashboardGrid } from '../components/DashboardGrid';
@@ -14,7 +15,7 @@ const useStyles = makeStyles(({ palette }) => ({
     page: {
         height: '100vh',
         backgroundColor: palette.background.main,
-        overflow: 'hidden',
+        overflow: 'auto',
     },
     gridItem: {
         border: '1px solid lightgrey',
@@ -35,7 +36,7 @@ const useStyles = makeStyles(({ palette }) => ({
 const ROWS = 2;
 const COLS = 2;
 
-export default function Dashboard() {
+export default function Dashboard({ hideWatchlist, hideNewsPanel}) {
     const classes = useStyles();
     const [ticker, setTicker] = useState('');
     const [hideChart, setHideChart] = useState(true);
@@ -46,7 +47,32 @@ export default function Dashboard() {
 
     const [items, setItems] = useState({
         watchlistPanel: { component: <WatchlistPanel />, x: 0, y: 0 },
-     })
+        newsPanel: {component: <NewsPanel />, x: 1, y: 0 }
+    })
+    
+    useEffect(() => {
+        if (hideWatchlist && hideNewsPanel) {
+            setItems({
+                
+            })
+        }
+        else if (hideWatchlist) {
+            setItems({
+                newsPanel: {component: <NewsPanel />, x: 1, y: 0 }
+            })
+        }
+        else if (hideNewsPanel) {
+            setItems({
+                watchlistPanel: { component: <WatchlistPanel />, x: 0, y: 0 }
+            })
+        }
+        else {
+            setItems({
+                watchlistPanel: { component: <WatchlistPanel />, x: 0, y: 0 },
+                newsPanel: {component: <NewsPanel />, x: 1, y: 0 }
+            })
+        }
+    }, [hideWatchlist, hideNewsPanel]);
 
     const moveItem = (itemKey, { x, y }) => {
         const temp = {...items};
