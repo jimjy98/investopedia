@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
         border: '3px solid green',
     },
     cell: {
-        border: '3px solid blue',
+        border: '3px solid green',
     },
 }));
 
