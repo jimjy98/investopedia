@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8717cbecf8d65b71eebe9e054ccf2901",
+    "revision": "2dfd25c0e97feabe4b20d350f785f79b",
     "url": "/investopedia/index.html"
   },
   {
-    "revision": "b5a2a7fca1d836967ff1",
+    "revision": "d0df4b99f56d67325ab7",
     "url": "/investopedia/static/css/main.b5dd3e23.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/investopedia/static/js/2.bbac97e5.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b5a2a7fca1d836967ff1",
-    "url": "/investopedia/static/js/main.12592bbe.chunk.js"
+    "revision": "d0df4b99f56d67325ab7",
+    "url": "/investopedia/static/js/main.07442eec.chunk.js"
   },
   {
     "revision": "31cdee2da2dc15a0ec98",

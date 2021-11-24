@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/investopedia/static/css/main.b5dd3e23.chunk.css",
-    "main.js": "/investopedia/static/js/main.12592bbe.chunk.js",
-    "main.js.map": "/investopedia/static/js/main.12592bbe.chunk.js.map",
+    "main.js": "/investopedia/static/js/main.07442eec.chunk.js",
+    "main.js.map": "/investopedia/static/js/main.07442eec.chunk.js.map",
     "runtime-main.js": "/investopedia/static/js/runtime-main.b43ef25f.js",
     "runtime-main.js.map": "/investopedia/static/js/runtime-main.b43ef25f.js.map",
     "static/js/2.bbac97e5.chunk.js": "/investopedia/static/js/2.bbac97e5.chunk.js",
     "static/js/2.bbac97e5.chunk.js.map": "/investopedia/static/js/2.bbac97e5.chunk.js.map",
     "index.html": "/investopedia/index.html",
-    "precache-manifest.6696e5d1fe5bc24178b6d87dd6ce338f.js": "/investopedia/precache-manifest.6696e5d1fe5bc24178b6d87dd6ce338f.js",
+    "precache-manifest.77b7bc3729dd82d8ea774426e3f2497e.js": "/investopedia/precache-manifest.77b7bc3729dd82d8ea774426e3f2497e.js",
     "service-worker.js": "/investopedia/service-worker.js",
     "static/css/main.b5dd3e23.chunk.css.map": "/investopedia/static/css/main.b5dd3e23.chunk.css.map",
     "static/js/2.bbac97e5.chunk.js.LICENSE.txt": "/investopedia/static/js/2.bbac97e5.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.b43ef25f.js",
     "static/js/2.bbac97e5.chunk.js",
     "static/css/main.b5dd3e23.chunk.css",
-    "static/js/main.12592bbe.chunk.js"
+    "static/js/main.07442eec.chunk.js"
   ]
 }
