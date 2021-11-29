@@ -6,9 +6,11 @@ import { DraggableGridItem } from './DraggableGridItem';
 const useStyles = makeStyles(() => ({
     container: {
         border: '3px solid green',
+        borderWidth: 'thin'
     },
     cell: {
         border: '3px solid green',
+        borderWidth: 'thin'
     },
 }));
 

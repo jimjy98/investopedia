@@ -189,7 +189,7 @@ export const App = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h2" align="center" color="primary">See, Hear, Invest!</Typography>
+          <Typography variant="h2" align="center" color="primary">Investopedia</Typography>
         </Toolbar>
       </AppBar>
 

@@ -52,9 +52,7 @@ export default function Dashboard({ hideWatchlist, hideNewsPanel}) {
     
     useEffect(() => {
         if (hideWatchlist && hideNewsPanel) {
-            setItems({
-                
-            })
+            setItems({})
         }
         else if (hideWatchlist) {
             setItems({
@@ -107,7 +105,7 @@ export default function Dashboard({ hideWatchlist, hideNewsPanel}) {
                                 )
                             }}
                         />
-                        {!hideChart && <Chart ticker={ticker} data={priceData} />}
+                        {!hideChart && ticker && <Chart ticker={ticker} data={priceData} />}
                     </Box>
                     
                     <DndProvider backend={HTML5Backend}>
