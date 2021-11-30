@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from '@mui/material';
+import { Button, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import ReactHighcharts from 'react-highcharts/ReactHighstock.src';
 import moment from 'moment';
+import splineData from '../assets/spline.json';
+import candleStickData from '../assets/candlestick.json';
 
 import { addToWatchlist, tickerExists, removeFromWatchlist, addToNotifications, notificationExists, removeFromNotifications } from '../api';
 
-export default function Chart({ ticker, data }) {
+export default function Chart({ ticker }) {
 
     const [tickerDoesExist, setTickerExists] = useState(false);
     const [notificationDoesExist, setNotificationExists] = useState(false);
-
+    const [chartType, setChartType] = useState('spline');
 
     useEffect(() => {
         tickerExists(ticker).then((exists) => {
@@ -125,9 +127,9 @@ export default function Chart({ ticker, data }) {
         },
         series: [{
             name: 'Price',
-            type: 'spline',
+            type: chartType,
 
-            data: data,
+            data: chartType === 'spline' ? splineData : candleStickData,
             tooltip: {
                 valueDecimals: 2
             },
@@ -137,6 +139,16 @@ export default function Chart({ ticker, data }) {
     };
     return (
         <div>
+            <ToggleButtonGroup
+                value={chartType}
+                exclusive
+                onChange={(event, value) => setChartType(value)}
+                aria-label="text alignment"
+                color='primary'
+            >
+                <ToggleButton value="spline"><Typography color='lightgrey'>Spline</Typography></ToggleButton>
+                <ToggleButton value="candlestick"><Typography color='lightgrey'>Candlestick</Typography></ToggleButton>
+            </ToggleButtonGroup>
             <ReactHighcharts config={configPrice} />
             {tickerDoesExist ?
                 <Button

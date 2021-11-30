@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import WatchlistPanel from '../components/WatchlistPanel';
 import NewsPanel from '../components/NewsPanel';
 import Chart from '../components/Chart';
-import priceData from '../assets/data.json';
+
 import { DashboardGrid } from '../components/DashboardGrid';
 
 import { DndProvider } from 'react-dnd'
@@ -105,7 +105,7 @@ export default function Dashboard({ hideWatchlist, hideNewsPanel}) {
                                 )
                             }}
                         />
-                        {!hideChart && ticker && <Chart ticker={ticker} data={priceData} />}
+                        {!hideChart && ticker && <Chart ticker={ticker} />}
                     </Box>
                     
                     <DndProvider backend={HTML5Backend}>
