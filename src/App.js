@@ -112,8 +112,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 function getIcon(i) {
   if (i === 0) return <DashboardIcon />
   else if (i === 1) return <VisibilityIcon />
-  else if (i === 2) return <AddIcon />
-  else if (i === 3) return <NotificationsIcon />
+  else if (i === 2) return <NotificationsIcon />
+  else if (i === 3) return <AddIcon />
   else if (i === 4) return <AnnouncementIcon />
 }
 
@@ -160,8 +160,8 @@ function generateListItem(item, i, handleClick, expand, handleHideWatchlist, han
 const pages = [
   { name: 'Dashboard', path: '/dashboard' },
   { name: 'Watchlist', path: '/watchlist' },
-  { name: 'Add panel' },
-  { name: 'Notifcations', path: '/notifications' },
+  { name: 'Notifications', path: '/notifications' },
+  { name: 'Add panel' }
 ];
 
 export const App = () => {

@@ -41,7 +41,6 @@ export const DashboardGrid = ({ rows, cols, items, moveItem }) => {
                 moveItem={moveItem} 
                 className={classes.cell} 
                 xs={12 / cols}
-                moveItem={moveItem}
             >
                 {gridData[row][col].component}
             </DraggableGridItem>

@@ -33,21 +33,23 @@ const useStyles = makeStyles(({ palette }) => ({
     }
 }));
 
-const ROWS = 2;
-const COLS = 2;
+const ROWS = 3;
+const COLS = 3;
 
 export default function Dashboard({ hideWatchlist, hideNewsPanel}) {
     const classes = useStyles();
     const [ticker, setTicker] = useState('');
     const [hideChart, setHideChart] = useState(true);
+    const [watchlistHidden, setWatchlistHidden] = useState(hideWatchlist);
+    const [newsPanelHidden, setnewsPanelHidden] = useState(hideNewsPanel);
 
     function onHideChart() {
         setHideChart(!hideChart);
     }
 
     const [items, setItems] = useState({
-        watchlistPanel: { component: <WatchlistPanel />, x: 0, y: 0 },
-        newsPanel: {component: <NewsPanel />, x: 1, y: 0 }
+        watchlistPanel: { component: !watchlistHidden ? <WatchlistPanel /> : null, x: 0, y: 0 },
+        newsPanel: { component: !newsPanelHidden ? <NewsPanel /> : null, x: 1, y: 0 }
     })
     
     useEffect(() => {
@@ -76,6 +78,7 @@ export default function Dashboard({ hideWatchlist, hideNewsPanel}) {
         const temp = {...items};
         temp[itemKey] = { ...temp[itemKey], x, y };
 
+        
         setItems(temp);
     };
 
