@@ -51,15 +51,12 @@ export const addToWatchlist = async (ticker) => {
     });
 }
 
-export const addToNotifications = async (ticker) => {
+export const addToNotifications = async (ticker, h, l) => {
     const db = getFirestore();
 
-    var curr = generateRandom(1000);
-    var h = curr + generateRandom(100);
-    var l = curr - generateRandom(100);
     await setDoc(doc(db, 'notifications', ticker.toLowerCase()), {
-        above: h,
-        below: l,
+        above: h ? h : null,
+        below: l ? l : null,
     });
 }
 

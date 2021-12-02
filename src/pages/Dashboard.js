@@ -33,8 +33,8 @@ const useStyles = makeStyles(({ palette }) => ({
     }
 }));
 
-const ROWS = 3;
-const COLS = 3;
+const ROWS = 2;
+const COLS = 2;
 
 export default function Dashboard({ hideWatchlist, hideNewsPanel}) {
     const classes = useStyles();

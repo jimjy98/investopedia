@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Button, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import { Button, Modal, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import ReactHighcharts from 'react-highcharts/ReactHighstock.src';
 import moment from 'moment';
 import splineData from '../assets/spline.json';
 import candleStickData from '../assets/candlestick.json';
+import NotificationsModal from './NotificationsModal';
 
 import { addToWatchlist, tickerExists, removeFromWatchlist, addToNotifications, notificationExists, removeFromNotifications } from '../api';
 
@@ -14,6 +15,7 @@ export default function Chart({ ticker }) {
     const [tickerDoesExist, setTickerExists] = useState(false);
     const [notificationDoesExist, setNotificationExists] = useState(false);
     const [chartType, setChartType] = useState('spline');
+    const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
         tickerExists(ticker).then((exists) => {
@@ -44,6 +46,8 @@ export default function Chart({ ticker }) {
             setNotificationExists(true);
         }
     }
+    const handleOpen = () => setModalOpen(true);
+    const handleClose = () => setModalOpen(false);
 
     const options = { style: 'currency', currency: 'USD' };
     const numberFormat = new Intl.NumberFormat('en-US', options);
@@ -177,14 +181,22 @@ export default function Chart({ ticker }) {
                 >
                     Remove from Notifications
                 </Button> :
-                <Button
+                [<Button
                     variant="contained"
                     color="primary"
                     startIcon={<AddIcon fontSize="small" />}
-                    onClick={() => handleNotificationExists()}
+                    onClick={handleOpen}
                 >
                     Add to Notifications
-                </Button>
+                </Button>,
+                <Modal
+                    open={modalOpen}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <NotificationsModal ticker={ticker} handleClose={handleClose} />
+                </Modal>]
             }
         </div>
     );
